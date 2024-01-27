@@ -21,6 +21,9 @@ import androidx.compose.ui.unit.sp
 
 val colourbutton = Color(0xFFDDE1FF)
 val colourtext = Color(0xFF08164B)
+val colourautoclear = Color(0xFFFF3030)
+val colouroperator = Color(0xFF493971)
+val colourrandombutton = Color(0xFFBA1A1A)
 
 @Composable
 fun NumberButton(number: String, onClickDo:()->Unit) {
@@ -67,20 +70,89 @@ fun NumberZeroButton(onClickDo: () -> Unit){
     }
 }
 
+@Composable
+fun AutoClearButton(onClickDo: () -> Unit){
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier
+            .size(143.dp, 138.dp)
+            .clip(RoundedCornerShape(34.dp))
+            .background(colourautoclear)
+            .clickable(onClick = { onClickDo() })
+    ){
+        BasicText(
+            text = "C/AC",
+            style = TextStyle(
+                color = Color.White,
+                fontSize = 45.sp,
+                fontFamily = FontFamily.SansSerif,
+                fontWeight = FontWeight.Medium,
+            ),
+        )
+    }
+}
+
+@Composable
+fun OperatorButton(operator: String, onClickDo:()->Unit) {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier
+            .size(90.dp, 90.dp)
+            .clip(RoundedCornerShape(34.dp))
+            .background(colouroperator)
+            .clickable(onClick = { onClickDo() })
+    )
+    {
+        BasicText(
+            text = operator.toString(),
+            style = TextStyle(
+                color = Color.White,
+                fontSize = 65.sp,
+                fontFamily = FontFamily.SansSerif,
+                fontWeight = FontWeight.Medium,
+            ),
+        )
+    }
+}
+
+@Composable
+fun OperatorButtonPlus(onClickDo:()->Unit) {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier
+            .size(90.dp, 196.dp)
+            .clip(RoundedCornerShape(34.dp))
+            .background(colouroperator)
+            .clickable(onClick = { onClickDo() })
+    )
+    {
+        BasicText(
+            text = "+",
+            style = TextStyle(
+                color = Color.White,
+                fontSize = 65.sp,
+                fontFamily = FontFamily.SansSerif,
+                fontWeight = FontWeight.Medium,
+            ),
+        )
+    }
+}
+
+@Composable
+fun CurrentlyRandomButton(onClickDo: () -> Unit){
+    Box(
+        modifier = Modifier
+            .size(90.dp, 29.dp)
+            .clip(RoundedCornerShape(34.dp))
+            .background(colourrandombutton)
+            .clickable(onClick = { onClickDo() })
+    )
+}
+
+
 
 @Preview
 @Composable
 fun NumberButtonPreview(){
     NumberButton(number = "7", onClickDo = {})
 }
-
-//Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize())
-
-/*
-* Surface(
-            modifier = Modifier
-                .size(300.dp)
-                .clip(RoundedCornerShape(109.dp))
-                .background(Color(0xFFDDE1FF)),
-            border = BorderStroke(1.dp, Color.Black),
-        )*/
